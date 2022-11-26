@@ -1,26 +1,34 @@
 <template>
-  <div class="flex flex-col items-center">
-    <span class="text-[200px] text-brand-gray leading-tight font-FjallaOne font-medium">{{ time }}</span>
+  <div class="flex flex-col items-center w-full">
+    <span class="text-[80px] lg:text-[200px] text-brand-gray leading-tight font-FjallaOne font-medium">{{ time }}</span>
     <section class="flex items-center">
       <img
         class="p-4 border-2 border-brand-gray rounded-full cursor-pointer"
         src="@/assets/icon-bell.svg"
         alt="bell"
       >
-      <img
+      <div
         v-if="isCountDown"
-        class="mx-4 p-6 bg-brand-gray rounded-full cursor-pointer"
-        src="@/assets/icon-pause--orange.svg"
-        alt="play"
+        class="mx-4 flex justify-center items-center w-12 h-12 bg-brand-gray rounded-full cursor-pointer"
         @click="stop"
       >
-      <img
+        <img
+          class="mx-4 bg-brand-gray rounded-full cursor-pointer"
+          src="@/assets/icon-pause--orange.svg"
+          alt="play"
+        >
+      </div>
+
+      <div
         v-else
-        class="mx-4 p-6 bg-brand-gray rounded-full cursor-pointer"
-        src="@/assets/icon-play--orange.svg"
-        alt="play"
+        class="mx-4 flex justify-center items-center w-12 h-12 bg-brand-gray rounded-full cursor-pointer"
         @click="start"
       >
+        <img
+          src="@/assets/icon-play--orange.svg"
+          alt="play"
+        >
+      </div>
       <img
         class="p-4 border-2 border-brand-gray rounded-full cursor-pointer"
         src="@/assets/icon-cancel.svg"

@@ -46,12 +46,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.divider::after{
-@apply absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-20;
+.divider::after {
+  @apply absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-20;
 
-content: '';
-width: 1px;
-height: 80%;
-
+  content: '';
+  width: 1px;
+  height: 80%;
 }
 </style>

@@ -24,24 +24,23 @@ export default function () {
       id: Math.floor((Math.random() * 1000)),
       content: inputValue.value,
       isDone: false,
-      created: Date.now(),
-      fulfilled: undefined
+      created: Date.now()
     }
-    store.dispatch('todo/addTodo', todo)
 
+    store.dispatch('todo/addTodo', todo)
     inputValue.value = ''
   }
 
-  const editTodo = (id:number, content:string) => {
+  const editTodo = (id: number, content: string) => {
     if (!content.length) return
     store.dispatch('todo/editTodo', { id, content })
   }
 
-  const deleteTodo = (id:number) => {
+  const deleteTodo = (id: number) => {
     store.dispatch('todo/deleteTodo', { id })
   }
 
-  const checkTodo = (id:number) => {
+  const checkTodo = (id: number) => {
     store.dispatch('todo/checkTodo', { id })
   }
 

@@ -11,11 +11,16 @@
     <aside-slide-modal
       :is-modal-open="isModalOpen"
     >
-      <header class="mb-10 flex justify-between items-center">
+      <header class="mb-10 flex justify-between items-center flex-wrap lg:flex-nowrap">
         <span class="text-[40px] text-brand-gray">代辦清單</span>
         <div>
-          <span class="text-brand-gray text-opacity-50 mr-10">未完成</span>
-          <span class="text-brand-gray">已完成</span>
+          <span
+            v-for="(label, key) in filters"
+            :key="key"
+            :class="{'text-opacity-50': key + '' !== filter}"
+            class="text-brand-gray first:mr-10 cursor-pointer"
+            @click="filter = key + ''"
+          >{{ label }}</span>
         </div>
       </header>
       <section class="p-2 flex justify-between bg-white w-full rounded-[182px] overflow-hidden">
@@ -35,7 +40,7 @@
       </section>
       <section class="mt-10">
         <todo-item
-          v-for="todo of todoList"
+          v-for="todo of filteredTodo"
           :id="todo.id"
           :key="todo.id"
           :is-done="todo.isDone"
@@ -51,11 +56,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import AsideSlideModal from '@/components/AsideSlideModal.vue'
 import TodoItem from '@/components/TodoItem.vue'
 import useTodo from '@/hooks/useTodo'
 import useAsideModal from '@/hooks/useAsideModal'
+import { computed } from '@vue/reactivity'
+import { ITodoItem } from '@/store/todo'
 
 export default defineComponent({
   components: {
@@ -66,7 +73,13 @@ export default defineComponent({
     const { isModalOpen, toggleModal } = useAsideModal('todo-list')
     const { todoList, inputValue, addTodo, editTodo, deleteTodo, checkTodo } = useTodo()
 
-    return { todoList, inputValue, addTodo, editTodo, deleteTodo, isModalOpen, toggleModal, checkTodo }
+    const filter = ref('0')
+    const filters = {
+      0: '未完成',
+      1: '已完成'
+    }
+    const filteredTodo = computed(() => todoList.value.filter((todo: ITodoItem) => todo.isDone === !!+filter.value))
+    return { filter, filters, filteredTodo, inputValue, addTodo, editTodo, deleteTodo, isModalOpen, toggleModal, checkTodo }
   }
 })
 </script>

@@ -1,9 +1,6 @@
 import { ref, Ref, inject, computed } from 'vue'
-import { useStore } from 'vuex'
 
 export default function (name:string) {
-  const store = useStore()
-
   const activeModal = inject<Ref<string>>('acitveModal')
 
   const canModalOpen = ref(false)

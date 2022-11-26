@@ -14,7 +14,7 @@
       <header class="mb-10 flex justify-between items-center">
         <span class="text-[40px] text-brand-gray">專注度分析</span>
       </header>
-      <section class="flex justify-between">
+      <section class="flex justify-between flex-wrap lg:flex-nowrap">
         <analysis-status-box
           title="今日"
           sub-title="2019.03.03"

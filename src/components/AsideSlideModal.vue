@@ -8,7 +8,7 @@
     >
       <div
         v-if="isModalOpen"
-        class="absolute top-0 left-[80px] pt-20 px-10 w-[640px] h-screen bg-brand-green modal-shodow"
+        class="absolute top-0 left-[80px] pt-20 px-5 lg:px-10 max-w-[640px] w-[calc(100%-80px)] h-screen bg-brand-green modal-shadow"
       >
         <slot />
       </div>
@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.modal-shodow{
+.modal-shadow{
   box-shadow: 0px 0px 40px #0000003D;
 }
 </style>

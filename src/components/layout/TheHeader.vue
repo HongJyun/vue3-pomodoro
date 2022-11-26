@@ -10,7 +10,7 @@ import { computed, defineComponent, onBeforeUnmount, ref } from 'vue'
 
 const getFullDate = (timestamp:Date) => {
   const yy = timestamp.getFullYear()
-  const mm = timestamp.getMonth().toString().padStart(2, '0')
+  const mm = (timestamp.getMonth() + 1).toString().padStart(2, '0')
   const dd = timestamp.getDate().toString().padStart(2, '0')
   return `${yy}.${mm}.${dd}`
 }
@@ -36,7 +36,7 @@ export default defineComponent({
     })
 
     const fullTime = computed(() => {
-      const fullTime = currentTime.value.getHours() + ':' + currentTime.value.getMinutes()
+      const fullTime = currentTime.value.getHours() + ':' + currentTime.value.getMinutes().toString().padStart(2, '0')
       return fullTime
     })
 
