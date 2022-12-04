@@ -14,7 +14,7 @@
           @change="$emit('update:isDone',!isDone)"
         >
       </label>
-      <div class="flex-grow text-brand-gray">
+      <div class="flex-grow text-brand-gray whitespace-nowrap">
         <input
           v-if="isEdit"
           v-model="editValue"

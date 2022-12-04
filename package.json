@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && cross-env TAILWIND_MODE=watch vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
